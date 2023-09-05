@@ -21,8 +21,8 @@ func NewServer(listenAdder string) *Server {
 func (s *Server) Run() error {
 	e := echo.New()
 
-	e.GET("/tokens", generateToken)
-	e.PATCH("/tokens/refresh", updateToken)
+	e.POST("/tokens", generateToken)
+	e.GET("/tokens/refresh", updateToken)
 
 	return http.ListenAndServe(s.listenAddr, e)
 }
